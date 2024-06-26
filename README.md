@@ -1,1 +1,1 @@
-# CompetiFitsafafas
+# CompetiFit
