@@ -9,13 +9,20 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel : AuthViewModel
     var body: some View {
-        Text("Hello World")
-            .padding(10)
+        Group {
+            if viewModel.userSession != nil {
+                ProfileView()
+            } else{
+                LoginView()
+            }
+        }
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
