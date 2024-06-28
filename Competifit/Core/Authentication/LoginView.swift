@@ -11,6 +11,7 @@ struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var healthManager: HealthManager
     var body: some View {
         NavigationStack {
             VStack {
@@ -69,6 +70,7 @@ struct LoginView: View {
                 }
             }
         }
+        
     }
 }
 

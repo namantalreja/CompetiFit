@@ -10,6 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @EnvironmentObject var viewModel : AuthViewModel
+    @EnvironmentObject var healthManager: HealthManager
     var body: some View {
         Group {
             if viewModel.userSession != nil {

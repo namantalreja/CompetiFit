@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    @State private var healthManager = HealthManager()
     var body: some View {
         if let user = viewModel.currentUser{
             List {
@@ -46,6 +47,14 @@ struct ProfileView: View {
 
                     Button {
                         print("Delete account..")
+                        async {
+                            do {
+                                try await healthManager.calculateSteps()
+                                print("\(healthManager.steps)")
+                            } catch {
+                                print("Doesnt work")
+                            }
+                        }
                     } label: {
                         SettingsRowView(imageName: "xmark.circle.fill",
                                         title: "Delete Account",
@@ -53,6 +62,8 @@ struct ProfileView: View {
                     }
                     
                 }
+            }.task {
+                await healthManager.requestAuthorization()
             }
         }
     }
