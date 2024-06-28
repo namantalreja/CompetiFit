@@ -61,9 +61,32 @@ struct ProfileView: View {
                                         tintColor: .red)
                     }
                     
+                    Button {
+                        async {
+                            do {
+                                try await viewModel.createGroup()
+                            } catch {
+                                print("Error")
+                            }
+                        }
+                    } label: {
+                        Text("Create Group")
+                    }
+                    
+                    Button {
+                        async {
+                            do {
+                                try await viewModel.joinGroup(groupID: "F956F09F-F178-4B72-A654-BD966E17E0B8")
+                            } catch {
+                                print("Error")
+                            }
+                        }
+                    } label: {
+                        Text("Create Group")
+                    }
                 }
-            }.task {
-                await healthManager.requestAuthorization()
+                
+                
             }
         }
     }

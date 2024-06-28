@@ -7,7 +7,19 @@
 
 import Foundation
 
-class Group: Identifiable, Codable {
+struct UserGroup: Identifiable, Codable {
+    
+    var member: [User]
+    var id = UUID()
+    
+    init(user: User) {
+        member = [user]
+        
+    }
+    
+    
+    
+    
     
     
 }

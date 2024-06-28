@@ -34,6 +34,7 @@
 		3D1574C32C2E4ADD00FEB3C2 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1574C22C2E4ADD00FEB3C2 /* HealthManager.swift */; };
 		3D7402452C2E625F00D56C30 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402442C2E625F00D56C30 /* Step.swift */; };
 		3D7402472C2E74BC00D56C30 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402462C2E74BC00D56C30 /* Group.swift */; };
+		3D7402492C2F35D000D56C30 /* GroupID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402482C2F35D000D56C30 /* GroupID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		3D1574C22C2E4ADD00FEB3C2 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		3D7402442C2E625F00D56C30 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		3D7402462C2E74BC00D56C30 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		3D7402482C2F35D000D56C30 /* GroupID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				26F50C402C2DDFBB003A0C48 /* User.swift */,
 				3D7402442C2E625F00D56C30 /* Step.swift */,
 				3D7402462C2E74BC00D56C30 /* Group.swift */,
+				3D7402482C2F35D000D56C30 /* GroupID.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				26F50C412C2DDFBB003A0C48 /* User.swift in Sources */,
 				26F50C3D2C2DDC25003A0C48 /* ProfileView.swift in Sources */,
 				26F50C3B2C2DD80C003A0C48 /* RegistrationView.swift in Sources */,
+				3D7402492C2F35D000D56C30 /* GroupID.swift in Sources */,
 				26F50C3F2C2DDF71003A0C48 /* SettingsRowView.swift in Sources */,
 				26F50C5F2C2DE3F5003A0C48 /* AuthViewModel.swift in Sources */,
 				3D1574C32C2E4ADD00FEB3C2 /* HealthManager.swift in Sources */,
