@@ -7,6 +7,13 @@
 
 import Foundation
 
-struct GroupID {
-    let groupID: String
+class GroupID: Identifiable, Codable {
+    let entryId: String
+    var groupUIUD: String = ""
+    var id = UUID()
+    
+    init(entryId: String) {
+        self.entryId = entryId
+    }
+
 }

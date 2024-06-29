@@ -45,22 +45,26 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func createGroup() async throws {
+    func createGroup(code: GroupID) async throws -> String {
         do {
             guard let currentUserSession = currentUser else {
                 print("Current user does not exist")
-                return
+                return""
             }
             var group = UserGroup(user: currentUserSession)
+            code.groupUIUD = group.id.uuidString
             try Firestore.firestore().collection("groups").document("\(group.id)").setData(from: group)
+            try Firestore.firestore().collection("codes").document(code.entryId).setData(from: code)
             
             let ref = Firestore.firestore().collection("users").document(currentUserSession.id)
             try await ref.updateData([
                 "groupID": "\(group.id)"
               ])
+            return code.entryId
         } catch let error {
           print("Error writing city to Firestore: \(error)")
         }
+        return ""
     }
     
     func joinGroup(groupID: String) async throws {

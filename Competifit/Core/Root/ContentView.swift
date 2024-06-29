@@ -15,6 +15,7 @@ struct ContentView: View {
         Group {
             if viewModel.userSession != nil {
                 ProfileView()
+                    .environmentObject(viewModel)
             } else{
                 LoginView()
             }
