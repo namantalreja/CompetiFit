@@ -4,43 +4,62 @@
 //
 //  Created by Vamsi Putti on 6/28/24.
 //
-
 import SwiftUI
 
 struct CreateGroupScreen: View {
-    @EnvironmentObject var viewModel : AuthViewModel
+    @State private var code = ""
+    @State private var userGroupID = "none"
+    @State private var res = false
+    @State private var showingGroupView = false
+
+    @EnvironmentObject var viewModel: AuthViewModel
     @EnvironmentObject var healthManager: HealthManager
-    @State var userGroupID = "none"
+
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 Button {
-                    async{
-                        do{
-                            try await self.userGroupID = viewModel.createGroup(code: GroupID(entryId: UserGroup.randomString(length: 6)))
+                    Task {
+                        do {
+                            self.userGroupID = try await viewModel.createGroup(code: UserGroup.randomString(length: 6))
+                            showingGroupView = true
+                        } catch {
+                            print("Error creating group: \(error)")
                         }
                     }
                 } label: {
                     Text("Create Group")
                 }
                 
-                Text("\(userGroupID)")
+                Text("Your secret Group ID is \(userGroupID)")
+                
+                InputView(text: $code,
+                          title: "Enter Joining Code",
+                          placeholder: "Enter Joining Code")
+                    .autocapitalization(.none)
                 
                 Button {
-                    async{
-                        do{
-                            try await viewModel.joinGroup(groupID: userGroupID)
+                    Task {
+                        do {
+                            res = try await viewModel.joinGroup(code: code)
+                            if res {
+                                showingGroupView = true
+                            } else {
+                                print("Join Failed")
+                            }
+                        } catch {
+                            print("Error joining group: \(error)")
                         }
                     }
                 } label: {
                     Text("Join Group")
                 }
+                
+                NavigationLink(destination: GroupView(), isActive: $showingGroupView) {
+                    EmptyView()
+                }
             }
+            .padding()
         }
-        
     }
-}
-
-#Preview {
-    CreateGroupScreen()
 }

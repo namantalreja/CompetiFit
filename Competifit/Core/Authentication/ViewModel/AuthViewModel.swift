@@ -45,47 +45,85 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func createGroup(code: GroupID) async throws -> String {
+    func createGroup(code: String) async throws -> String {
         do {
             guard let currentUserSession = currentUser else {
                 print("Current user does not exist")
                 return""
             }
-            var group = UserGroup(user: currentUserSession)
-            code.groupUIUD = group.id.uuidString
+            var group = UserGroup(entryId: code, member: currentUser != nil ? [currentUser!.id] : [], id: UUID())
             try Firestore.firestore().collection("groups").document("\(group.id)").setData(from: group)
-            try Firestore.firestore().collection("codes").document(code.entryId).setData(from: code)
             
             let ref = Firestore.firestore().collection("users").document(currentUserSession.id)
             try await ref.updateData([
                 "groupID": "\(group.id)"
               ])
-            return code.entryId
+            return code
         } catch let error {
           print("Error writing city to Firestore: \(error)")
         }
         return ""
     }
     
-    func joinGroup(groupID: String) async throws {
-        do {
-            guard let currentUserSession = currentUser else {
-                print("Current user does not exist")
-                return
-            }
-            var group = UserGroup(user: currentUserSession)
-            guard let snapshot = try? await Firestore.firestore().collection("groups").document(groupID).getDocument() else { return }
-            var groupFirebase = try? snapshot.data(as: UserGroup.self)
-            groupFirebase?.member.append(currentUserSession)
-            try Firestore.firestore().collection("groups").document(groupID).setData(from: groupFirebase)
-            
-            let ref = Firestore.firestore().collection("users").document(currentUserSession.id)
-            try await ref.updateData([
-                "groupID": "\(groupID)"
-              ])
-        } catch let error {
-          print("Error writing city to Firestore: \(error)")
-        }
+    func joinGroup(code: String) async throws -> Bool{
+        guard let currentUserSession = currentUser else {
+               print("Current user does not exist")
+               return false
+           }
+           var groupID: String = ""
+           do {
+               let snapshot = try await Firestore.firestore().collection("groups")
+                   .whereField("entryId", isEqualTo: String(code))
+                   .getDocuments()
+
+               if snapshot.documents.isEmpty || snapshot.documents.count > 1 {
+                   print(snapshot.documents)
+                   print("No groups or too many groups found")
+                   return false
+               }
+               if let documentData = snapshot.documents.first?.data() {
+                   if let groupUUID = documentData["id"] as? String {
+                       groupID = groupUUID
+                   } else {
+                       print("Group UUID not found")
+                       return false
+                   }
+               } else {
+                   print("Document data not found")
+                   return false
+               }
+           } catch {
+               print("Error querying Firestore: \(error.localizedDescription)")
+               return false
+           }
+           if !groupID.isEmpty {
+               print("Group UUID: \(groupID)")
+               do {
+                      try await Firestore.firestore().collection("groups").document(groupID).updateData([
+                        "member": FieldValue.arrayUnion([currentUserSession.id])
+                       ]) { error in
+                           if let error = error {
+                               print("Error adding user to the group: \(error.localizedDescription)")
+                               
+                           }
+                           else {
+                               print("User successfully added to the group")
+                        
+                               Firestore.firestore().collection("users").document(currentUserSession.id).updateData([
+                                   "groupID": groupID
+                               ]) { error in
+                                   if let error = error {
+                                       print("Error updating user's groupID: \(error.localizedDescription)")
+                                   } else {
+                                       print("User's groupID successfully updated")
+                                   }
+                               }
+                           }
+                       }
+                   return true
+                   }
+           }
+        return true
     }
     
 

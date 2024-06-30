@@ -8,14 +8,9 @@
 import Foundation
 
 struct UserGroup: Identifiable, Codable {
-    
-    var member: [User]
+    let entryId: String
+    var member: [String]
     var id = UUID()
-    
-    init(user: User) {
-        member = [user]
-        
-    }
     
     static func randomString(length: Int) -> String {
       let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

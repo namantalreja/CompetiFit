@@ -17,12 +17,13 @@ struct ContentView: View {
                 ProfileView()
                     .environmentObject(viewModel)
             } else{
+                
                 LoginView()
             }
         }
     }
+    
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
