@@ -11,6 +11,7 @@ import Firebase
 @main
 struct CompetifitApp: App {
     @StateObject var viewModel = AuthViewModel()
+    @StateObject var healthManager = HealthManager()
     
     init(){
         FirebaseApp.configure()
@@ -19,6 +20,7 @@ struct CompetifitApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
+                .environmentObject(healthManager)
         }
     }
 }

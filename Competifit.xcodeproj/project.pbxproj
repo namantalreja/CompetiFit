@@ -12,7 +12,6 @@
 		26146EBE2C2D41DC001C2B7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26146EBD2C2D41DC001C2B7C /* Assets.xcassets */; };
 		26146EC22C2D41DC001C2B7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26146EC12C2D41DC001C2B7C /* Preview Assets.xcassets */; };
 		2654FCA42C3015CA00EFFCE3 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2654FCA32C3015CA00EFFCE3 /* GroupView.swift */; };
-		26C909CA2C2FEF4B000E8FC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26C909C92C2FEF4B000E8FC9 /* GoogleService-Info.plist */; };
 		26F50C372C2DD447003A0C48 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F50C362C2DD447003A0C48 /* LoginView.swift */; };
 		26F50C392C2DD559003A0C48 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F50C382C2DD559003A0C48 /* InputView.swift */; };
 		26F50C3B2C2DD80C003A0C48 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F50C3A2C2DD80C003A0C48 /* RegistrationView.swift */; };
@@ -34,6 +33,11 @@
 		26F50C5F2C2DE3F5003A0C48 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F50C5E2C2DE3F5003A0C48 /* AuthViewModel.swift */; };
 		3D1574C32C2E4ADD00FEB3C2 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1574C22C2E4ADD00FEB3C2 /* HealthManager.swift */; };
 		3D51649E2C2F7A5400E85666 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D51649D2C2F7A5400E85666 /* CreateGroupScreen.swift */; };
+		3D5164A82C31C1ED00E85666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D5164A72C31C1ED00E85666 /* GoogleService-Info.plist */; };
+		3D5164AD2C32205B00E85666 /* LeaderboardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5164AC2C32205B00E85666 /* LeaderboardsView.swift */; };
+		3D5164AF2C3221F600E85666 /* GroupsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5164AE2C3221F500E85666 /* GroupsComponent.swift */; };
+		3D5164B12C32221800E85666 /* InidividualGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5164B02C32221800E85666 /* InidividualGroupView.swift */; };
+		3D5164B32C3259FF00E85666 /* RankComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5164B22C3259FF00E85666 /* RankComponent.swift */; };
 		3D7402452C2E625F00D56C30 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402442C2E625F00D56C30 /* Step.swift */; };
 		3D7402472C2E74BC00D56C30 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402462C2E74BC00D56C30 /* Group.swift */; };
 		3D7402492C2F35D000D56C30 /* GroupID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402482C2F35D000D56C30 /* GroupID.swift */; };
@@ -47,7 +51,6 @@
 		26146EBF2C2D41DC001C2B7C /* Competifit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Competifit.entitlements; sourceTree = "<group>"; };
 		26146EC12C2D41DC001C2B7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2654FCA32C3015CA00EFFCE3 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
-		26C909C92C2FEF4B000E8FC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26F50C362C2DD447003A0C48 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		26F50C382C2DD559003A0C48 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		26F50C3A2C2DD80C003A0C48 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
@@ -57,6 +60,11 @@
 		26F50C5E2C2DE3F5003A0C48 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3D1574C22C2E4ADD00FEB3C2 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		3D51649D2C2F7A5400E85666 /* CreateGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateGroupScreen.swift; path = Competifit/Model/CreateGroupScreen.swift; sourceTree = SOURCE_ROOT; };
+		3D5164A72C31C1ED00E85666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D5164AC2C32205B00E85666 /* LeaderboardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardsView.swift; sourceTree = "<group>"; };
+		3D5164AE2C3221F500E85666 /* GroupsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsComponent.swift; sourceTree = "<group>"; };
+		3D5164B02C32221800E85666 /* InidividualGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InidividualGroupView.swift; sourceTree = "<group>"; };
+		3D5164B22C3259FF00E85666 /* RankComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankComponent.swift; sourceTree = "<group>"; };
 		3D7402442C2E625F00D56C30 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		3D7402462C2E74BC00D56C30 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3D7402482C2F35D000D56C30 /* GroupID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupID.swift; sourceTree = "<group>"; };
@@ -110,7 +118,7 @@
 				26F50C2F2C2DD37D003A0C48 /* App */,
 				26146EBD2C2D41DC001C2B7C /* Assets.xcassets */,
 				26146EBF2C2D41DC001C2B7C /* Competifit.entitlements */,
-				26C909C92C2FEF4B000E8FC9 /* GoogleService-Info.plist */,
+				3D5164A72C31C1ED00E85666 /* GoogleService-Info.plist */,
 				26146EC02C2D41DC001C2B7C /* Preview Content */,
 			);
 			path = Competifit;
@@ -144,6 +152,7 @@
 		26F50C312C2DD3A2003A0C48 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3D5164AA2C32203800E85666 /* Leaderboards */,
 				3D1574C12C2E4AD000FEB3C2 /* HealthKit */,
 				26F50C352C2DD3FA003A0C48 /* Profile */,
 				26F50C342C2DD3EB003A0C48 /* Authentication */,
@@ -213,6 +222,25 @@
 				3D1574C22C2E4ADD00FEB3C2 /* HealthManager.swift */,
 			);
 			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		3D5164AA2C32203800E85666 /* Leaderboards */ = {
+			isa = PBXGroup;
+			children = (
+				3D5164AB2C32204700E85666 /* Components */,
+				3D5164AC2C32205B00E85666 /* LeaderboardsView.swift */,
+				3D5164B02C32221800E85666 /* InidividualGroupView.swift */,
+			);
+			path = Leaderboards;
+			sourceTree = "<group>";
+		};
+		3D5164AB2C32204700E85666 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3D5164AE2C3221F500E85666 /* GroupsComponent.swift */,
+				3D5164B22C3259FF00E85666 /* RankComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,8 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				26146EC22C2D41DC001C2B7C /* Preview Assets.xcassets in Resources */,
-				26C909CA2C2FEF4B000E8FC9 /* GoogleService-Info.plist in Resources */,
 				26146EBE2C2D41DC001C2B7C /* Assets.xcassets in Resources */,
+				3D5164A82C31C1ED00E85666 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,17 +335,21 @@
 				26F50C372C2DD447003A0C48 /* LoginView.swift in Sources */,
 				2654FCA42C3015CA00EFFCE3 /* GroupView.swift in Sources */,
 				26F50C392C2DD559003A0C48 /* InputView.swift in Sources */,
+				3D5164AD2C32205B00E85666 /* LeaderboardsView.swift in Sources */,
 				3D7402472C2E74BC00D56C30 /* Group.swift in Sources */,
 				26146EBA2C2D41DB001C2B7C /* ContentView.swift in Sources */,
+				3D5164B32C3259FF00E85666 /* RankComponent.swift in Sources */,
 				3D51649E2C2F7A5400E85666 /* CreateGroupScreen.swift in Sources */,
 				26146EB82C2D41DB001C2B7C /* CompetifitApp.swift in Sources */,
 				26F50C412C2DDFBB003A0C48 /* User.swift in Sources */,
 				26F50C3D2C2DDC25003A0C48 /* ProfileView.swift in Sources */,
 				26F50C3B2C2DD80C003A0C48 /* RegistrationView.swift in Sources */,
+				3D5164AF2C3221F600E85666 /* GroupsComponent.swift in Sources */,
 				3D7402492C2F35D000D56C30 /* GroupID.swift in Sources */,
 				26F50C3F2C2DDF71003A0C48 /* SettingsRowView.swift in Sources */,
 				26F50C5F2C2DE3F5003A0C48 /* AuthViewModel.swift in Sources */,
 				3D1574C32C2E4ADD00FEB3C2 /* HealthManager.swift in Sources */,
+				3D5164B12C32221800E85666 /* InidividualGroupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

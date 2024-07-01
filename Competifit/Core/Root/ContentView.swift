@@ -14,8 +14,26 @@ struct ContentView: View {
     var body: some View {
         Group {
             if viewModel.userSession != nil {
-                ProfileView()
-                    .environmentObject(viewModel)
+                TabView {
+                    LeaderboardsView()
+                        .environmentObject(viewModel)
+                        .tabItem {
+                            Image(systemName: "shared.with.you")
+                            Text("Leaderboards")
+                        }
+                    ProfileView()
+                        .environmentObject(viewModel)
+                        .tabItem {
+                            Image(systemName: "person")
+                            Text("Profile")
+                        }
+                }
+                .onAppear {
+                    async {
+                        try await self.healthManager.requestAuthorization()
+                    }
+                }
+                
             } else{
                 
                 LoginView()

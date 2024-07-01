@@ -31,12 +31,32 @@ class AuthViewModel: ObservableObject {
         }
 
     }
+    
+    func getGroupsSteps() async -> [[Step]]{
+        var groupsSteps: [[Step]] = []
+        
+        do {
+            guard let currGroupID = currentUser?.groupID else {return []}
+            guard let snapshot = try? await Firestore.firestore().collection("groups").document(currGroupID).getDocument() else { return [] }
+            var currUserGroup = try snapshot.data(as: UserGroup.self)
+            for groupMember in currUserGroup.member {
+                guard let memberData = try? await Firestore.firestore().collection("users").document(groupMember).getDocument() else {return groupsSteps}
+                var temp = try memberData.data(as: User.self)
+                groupsSteps.append(temp.weeklySteps)
+            }
+        } catch {
+            print("DEBUG: Failed to create user with error \(error.localizedDescription)")
+        }
+        return groupsSteps
+    }
 
     func createUser(withEmail email: String, password: String, fullname: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            var hm = HealthManager()
+            try await hm.calculateSteps()
             self.userSession = result.user
-            let user = User(id: result.user.uid, fullname: fullname, email: email, groupID: "none")
+            let user = User(id: result.user.uid, fullname: fullname, email: email, groupID: "none", weeklySteps: hm.steps)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await fetchUser()
