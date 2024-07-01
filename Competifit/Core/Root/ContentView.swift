@@ -13,7 +13,7 @@ struct ContentView: View {
     @EnvironmentObject var healthManager: HealthManager
     var body: some View {
         Group {
-            if viewModel.userSession != nil {
+            if viewModel.currentUser != nil {
                 TabView {
                     LeaderboardsView()
                         .environmentObject(viewModel)
