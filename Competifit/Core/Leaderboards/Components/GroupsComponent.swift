@@ -9,12 +9,13 @@ import SwiftUI
 
 struct GroupsComponent: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    var code: String
     var body: some View {
         NavigationLink {
             InidividualGroupView()
         } label: {
             HStack {
-                Text("Group 1 Name")
+                Text("\(code)")
                     .foregroundStyle(.white)
                 
                 
@@ -31,5 +32,5 @@ struct GroupsComponent: View {
 }
 
 #Preview {
-    GroupsComponent()
+    GroupsComponent(code: "")
 }

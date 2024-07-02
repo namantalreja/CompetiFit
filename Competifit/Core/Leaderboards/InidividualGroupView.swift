@@ -9,16 +9,21 @@ import SwiftUI
 
 struct InidividualGroupView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    @State var groupMembers: [User] = []
+    
+    
     var body: some View {
         ScrollView {
-            ForEach (0..<10) { number in
-               RankComponent()
+            ForEach (groupMembers) { member in
+                RankComponent(name: member.fullname, steps: member.weeklySteps)
             }
         }
         .padding()
         .onAppear {
             async{
-                try await print(viewModel.getGroupsSteps())
+                self.groupMembers = try await viewModel.getGroupMembers()
+                print(groupMembers)
+                //try await print(viewModel.getGroupsSteps())
             }
         }
     }

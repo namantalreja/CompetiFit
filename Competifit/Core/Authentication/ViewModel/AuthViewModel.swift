@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    @Published var currentGroupID: String?
 
     init() {
         self.userSession = Auth.auth().currentUser
@@ -49,6 +50,26 @@ class AuthViewModel: ObservableObject {
         }
         return groupsSteps
     }
+    
+    
+    func getGroupMembers() async -> [User] {
+        var groupMembers: [User] = []
+        do {
+            guard let currGroupID = currentUser?.groupID else {return []}
+            guard let snapshot = try? await Firestore.firestore().collection("groups").document(currGroupID).getDocument() else { return [] }
+            var currUserGroup = try snapshot.data(as: UserGroup.self)
+            for groupMember in currUserGroup.member {
+                guard let memberData = try? await Firestore.firestore().collection("users").document(groupMember).getDocument() else {return []}
+                var temp = try memberData.data(as: User.self)
+                print("User: \(temp)")
+                groupMembers.append(temp)
+            }
+            return groupMembers
+        } catch {
+            print("DEBUG: Failed to create user with error \(error.localizedDescription)")
+        }
+        return groupMembers
+    }
 
     func createUser(withEmail email: String, password: String, fullname: String) async throws {
         do {
@@ -78,6 +99,7 @@ class AuthViewModel: ObservableObject {
             try await ref.updateData([
                 "groupID": "\(group.id)"
               ])
+            
             return code
         } catch let error {
           print("Error writing city to Firestore: \(error)")
@@ -128,10 +150,12 @@ class AuthViewModel: ObservableObject {
                            }
                            else {
                                print("User successfully added to the group")
-                        
+                               self.currentGroupID = groupID                        
                                Firestore.firestore().collection("users").document(currentUserSession.id).updateData([
                                    "groupID": groupID
-                               ]) { error in
+                               ])
+                               
+                               { error in
                                    if let error = error {
                                        print("Error updating user's groupID: \(error.localizedDescription)")
                                    } else {
@@ -164,8 +188,10 @@ class AuthViewModel: ObservableObject {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
         self.currentUser = try? snapshot.data(as: User.self)
+        self.currentGroupID = currentUser?.groupID
         
         print("Current user:\(self.currentUser)")
     }
+
 }
 

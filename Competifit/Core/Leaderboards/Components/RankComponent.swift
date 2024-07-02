@@ -9,15 +9,21 @@ import SwiftUI
 
 struct RankComponent: View {
     @EnvironmentObject var viewModel: AuthViewModel
+    var name: String
+    var steps: [Step]
+    init(name: String, steps: [Step]) {
+        self.name = name
+        self.steps = steps
+    }
     var body: some View {
         HStack {
-            Text("User 1 Name")
+            Text("\(name)")
                 .foregroundStyle(.white)
             
             
             Spacer()
             
-            Text("Steps")
+            Text("\(steps[steps.count - 1].count)")
                 .foregroundColor(.white)
         }
         .padding()
@@ -27,5 +33,5 @@ struct RankComponent: View {
 }
 
 #Preview {
-    RankComponent()
+    RankComponent(name: "", steps: [])
 }
