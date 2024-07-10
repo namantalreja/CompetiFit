@@ -26,6 +26,7 @@ struct ContentView: View {
                         .tabItem {
                             Image(systemName: "person")
                             Text("Profile")
+                                .font(Font.custom(Fonts.ARCADE_BODY, size: 12))
                         }
                 }
                 .onAppear {
@@ -33,6 +34,7 @@ struct ContentView: View {
                         try await self.healthManager.requestAuthorization()
                     }
                 }
+                .accentColor(Color(red: 1, green: 0.9294117647058824, blue: 0.5098039215686274))
                 
             } else{
                 

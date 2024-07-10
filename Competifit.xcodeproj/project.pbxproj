@@ -38,6 +38,9 @@
 		3D5164B12C32221800E85666 /* InidividualGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5164B02C32221800E85666 /* InidividualGroupView.swift */; };
 		3D5164B32C3259FF00E85666 /* RankComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5164B22C3259FF00E85666 /* RankComponent.swift */; };
 		3D5164B72C3380FC00E85666 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D5164B62C3380FC00E85666 /* GoogleService-Info.plist */; };
+		3D56944A2C3DCFC900A8FA4D /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5694492C3DCFC900A8FA4D /* Fonts.swift */; };
+		3D5694502C3DD1DB00A8FA4D /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D56944E2C3DD0C200A8FA4D /* PressStart2P-Regular.ttf */; };
+		3D5694512C3DD1DE00A8FA4D /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D56944D2C3DD0BC00A8FA4D /* DotGothic16-Regular.ttf */; };
 		3D7402452C2E625F00D56C30 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402442C2E625F00D56C30 /* Step.swift */; };
 		3D7402472C2E74BC00D56C30 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402462C2E74BC00D56C30 /* Group.swift */; };
 		3D7402492C2F35D000D56C30 /* GroupID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7402482C2F35D000D56C30 /* GroupID.swift */; };
@@ -65,6 +68,10 @@
 		3D5164B02C32221800E85666 /* InidividualGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InidividualGroupView.swift; sourceTree = "<group>"; };
 		3D5164B22C3259FF00E85666 /* RankComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankComponent.swift; sourceTree = "<group>"; };
 		3D5164B62C3380FC00E85666 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D5694492C3DCFC900A8FA4D /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		3D56944D2C3DD0BC00A8FA4D /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DotGothic16-Regular.ttf"; path = "../../../../Downloads/DotGothic16/DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
+		3D56944E2C3DD0C200A8FA4D /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PressStart2P-Regular.ttf"; path = "../../../../Downloads/Press_Start_2P/PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
+		3D56944F2C3DD0D800A8FA4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3D7402442C2E625F00D56C30 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		3D7402462C2E74BC00D56C30 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		3D7402482C2F35D000D56C30 /* GroupID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupID.swift; sourceTree = "<group>"; };
@@ -112,6 +119,9 @@
 		26146EB62C2D41DB001C2B7C /* Competifit */ = {
 			isa = PBXGroup;
 			children = (
+				3D56944F2C3DD0D800A8FA4D /* Info.plist */,
+				3D56944C2C3DD0AA00A8FA4D /* FontFiles */,
+				3D5694482C3DCFB800A8FA4D /* Constants */,
 				26F50C322C2DD3B2003A0C48 /* Model */,
 				26F50C312C2DD3A2003A0C48 /* Core */,
 				26F50C302C2DD385003A0C48 /* Components */,
@@ -243,6 +253,23 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		3D5694482C3DCFB800A8FA4D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				3D5694492C3DCFC900A8FA4D /* Fonts.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		3D56944C2C3DD0AA00A8FA4D /* FontFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3D56944E2C3DD0C200A8FA4D /* PressStart2P-Regular.ttf */,
+				3D56944D2C3DD0BC00A8FA4D /* DotGothic16-Regular.ttf */,
+			);
+			path = FontFiles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,7 +345,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5694502C3DD1DB00A8FA4D /* PressStart2P-Regular.ttf in Resources */,
 				26146EC22C2D41DC001C2B7C /* Preview Assets.xcassets in Resources */,
+				3D5694512C3DD1DE00A8FA4D /* DotGothic16-Regular.ttf in Resources */,
 				26146EBE2C2D41DC001C2B7C /* Assets.xcassets in Resources */,
 				3D5164B72C3380FC00E85666 /* GoogleService-Info.plist in Resources */,
 			);
@@ -347,6 +376,7 @@
 				3D5164AF2C3221F600E85666 /* GroupsComponent.swift in Sources */,
 				3D7402492C2F35D000D56C30 /* GroupID.swift in Sources */,
 				26F50C3F2C2DDF71003A0C48 /* SettingsRowView.swift in Sources */,
+				3D56944A2C3DCFC900A8FA4D /* Fonts.swift in Sources */,
 				26F50C5F2C2DE3F5003A0C48 /* AuthViewModel.swift in Sources */,
 				3D1574C32C2E4ADD00FEB3C2 /* HealthManager.swift in Sources */,
 				3D5164B12C32221800E85666 /* InidividualGroupView.swift in Sources */,
@@ -484,6 +514,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Competifit/Info.plist;
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "We need this to get your steps.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need this to get your steps.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need this to get your steps.";
@@ -526,6 +557,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Competifit/Info.plist;
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "We need this to get your steps.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need this to get your steps.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need this to get your steps.";

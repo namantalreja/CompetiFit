@@ -15,6 +15,8 @@ struct CompetifitApp: App {
     
     init(){
         FirebaseApp.configure()
+        UITabBar.appearance().unselectedItemTintColor = .white
+        UITabBar.appearance().backgroundColor = UIColor(red: 0.9254901960784314, green: 0.35294117647058826, blue: 0.35294117647058826, alpha: 1)
     }
     var body: some Scene {
         WindowGroup {

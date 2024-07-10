@@ -14,6 +14,7 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var currentGroupID: String?
+    @Published var currentGroup: UserGroup?
 
     init() {
         self.userSession = Auth.auth().currentUser
@@ -40,7 +41,7 @@ class AuthViewModel: ObservableObject {
             guard let currGroupID = currentUser?.groupID else {return []}
             guard let snapshot = try? await Firestore.firestore().collection("groups").document(currGroupID).getDocument() else { return [] }
             var currUserGroup = try snapshot.data(as: UserGroup.self)
-            for groupMember in currUserGroup.member {
+            for groupMember in currUserGroup.members {
                 guard let memberData = try? await Firestore.firestore().collection("users").document(groupMember).getDocument() else {return groupsSteps}
                 var temp = try memberData.data(as: User.self)
                 groupsSteps.append(temp.weeklySteps)
@@ -55,10 +56,10 @@ class AuthViewModel: ObservableObject {
     func getGroupMembers() async -> [User] {
         var groupMembers: [User] = []
         do {
-            guard let currGroupID = currentUser?.groupID else {return []}
-            guard let snapshot = try? await Firestore.firestore().collection("groups").document(currGroupID).getDocument() else { return [] }
+//            guard let currGroupID = currentUser?.groupID else {return []}
+            guard let snapshot = try? await Firestore.firestore().collection("groups").document(currentGroupID!).getDocument() else { return [] }
             var currUserGroup = try snapshot.data(as: UserGroup.self)
-            for groupMember in currUserGroup.member {
+            for groupMember in currUserGroup.members {
                 guard let memberData = try? await Firestore.firestore().collection("users").document(groupMember).getDocument() else {return []}
                 var temp = try memberData.data(as: User.self)
                 print("User: \(temp)")
@@ -86,28 +87,26 @@ class AuthViewModel: ObservableObject {
         }
     }
     
-    func createGroup(code: String) async throws -> String {
+    func createGroup(code: String, groupName: String) async throws {
         do {
             guard let currentUserSession = currentUser else {
                 print("Current user does not exist")
-                return""
+                return
             }
-            var group = UserGroup(entryId: code, member: currentUser != nil ? [currentUser!.id] : [], id: UUID())
+            var group = UserGroup(entryId: code, members: currentUser != nil ? [currentUser!.id] : [], groupName: groupName, id: UUID())
             try Firestore.firestore().collection("groups").document("\(group.id)").setData(from: group)
             
             let ref = Firestore.firestore().collection("users").document(currentUserSession.id)
             try await ref.updateData([
                 "groupID": "\(group.id)"
               ])
-            
-            return code
+            currentGroupID = group.id.uuidString
         } catch let error {
           print("Error writing city to Firestore: \(error)")
         }
-        return ""
     }
     
-    func joinGroup(code: String) async throws -> Bool{
+    func joinGroup(code: String) async throws -> Bool {
         guard let currentUserSession = currentUser else {
                print("Current user does not exist")
                return false
@@ -142,7 +141,7 @@ class AuthViewModel: ObservableObject {
                print("Group UUID: \(groupID)")
                do {
                       try await Firestore.firestore().collection("groups").document(groupID).updateData([
-                        "member": FieldValue.arrayUnion([currentUserSession.id])
+                        "members": FieldValue.arrayUnion([currentUserSession.id])
                        ]) { error in
                            if let error = error {
                                print("Error adding user to the group: \(error.localizedDescription)")
@@ -189,6 +188,11 @@ class AuthViewModel: ObservableObject {
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
         self.currentUser = try? snapshot.data(as: User.self)
         self.currentGroupID = currentUser?.groupID
+        if currentGroupID != "none" {
+            guard let snapshot = try? await Firestore.firestore().collection("groups").document(currentGroupID!).getDocument() else { return }
+            self.currentGroup = try? snapshot.data(as: UserGroup.self)
+        }
+        
         
         print("Current user:\(self.currentUser)")
     }

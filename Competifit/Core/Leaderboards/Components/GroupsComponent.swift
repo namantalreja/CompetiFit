@@ -12,7 +12,7 @@ struct GroupsComponent: View {
     var code: String
     var body: some View {
         NavigationLink {
-            InidividualGroupView()
+            InidividualGroupView(groupID: "", joinCode: "")
         } label: {
             HStack {
                 Text("\(code)")

@@ -21,7 +21,7 @@ struct CreateGroupScreen: View {
                 Button {
                     Task {
                         do {
-                            self.userGroupID = try await viewModel.createGroup(code: UserGroup.randomString(length: 6))
+//                            self.userGroupID = try await viewModel.createGroup(code: UserGroup.randomString(length: 6))
                             showingGroupView = true
                         } catch {
                             print("Error creating group: \(error)")

@@ -9,7 +9,8 @@ import Foundation
 
 struct UserGroup: Identifiable, Codable {
     let entryId: String
-    var member: [String]
+    var members: [String]
+    var groupName: String
     var id = UUID()
     
     static func randomString(length: Int) -> String {
